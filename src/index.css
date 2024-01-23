@@ -1,0 +1,28 @@
+body {
+  background-color: rgb(0, 0, 0) !important;
+}
+.stopwatch {
+  text-align: center;
+  margin: 20px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.display {
+  font-size: 10em;
+  color: white;
+  margin: 20px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+button {
+  font-size: 2em;
+  border-radius: 0.2em;
+  margin: 20px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-style: normal;
+}
