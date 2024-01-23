@@ -8,7 +8,7 @@ function App() {
   const [seconds, setSeconds] = useState(0);
 
   const startStopWatch = () => {
-    setTimer(setInterval(updateStopWatch, 20));
+    setTimer(setInterval(updateStopWatch, 1000));
   };
 
   const stopWatch = () => {
