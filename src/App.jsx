@@ -1,14 +1,35 @@
-import { useState, useEffect } from "react";
+import { useRecoilState, atom } from "recoil";
+import { useEffect } from "react";
 import "./index.css";
 
+const timerState = atom({
+  key: "timerState",
+  default: "null",
+});
+
+const hourState = atom({
+  key: "hourState",
+  default: 0,
+});
+
+const minuteState = atom({
+  key: "minuteState",
+  default: 0,
+});
+
+const secondState = atom({
+  key: "secondState",
+  default: 0,
+});
+
 function App() {
-  const [timer, setTimer] = useState(null);
-  const [hours, setHours] = useState(0);
-  const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(0);
+  const [timer, setTimer] = useRecoilState(timerState);
+  const [hours, setHours] = useRecoilState(hourState);
+  const [minutes, setMinutes] = useRecoilState(minuteState);
+  const [seconds, setSeconds] = useRecoilState(secondState);
 
   const startStopWatch = () => {
-    setTimer(setInterval(updateStopWatch, 20));
+    setTimer(setInterval(updateStopWatch, 1000));
   };
 
   const stopWatch = () => {
@@ -42,7 +63,7 @@ function App() {
     return () => {
       clearInterval(timer);
     };
-  }, [timer]);
+  }, []);
 
   return (
     <>
@@ -50,9 +71,11 @@ function App() {
         <div className="display">{`${String(hours).padStart(2, "0")}:${String(
           minutes
         ).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`}</div>
-        <button onClick={startStopWatch}>Start</button>
-        <button onClick={stopWatch}>Stop</button>
-        <button onClick={resetStopWatch}>Reset</button>
+        <div>
+          <button onClick={startStopWatch}>Start</button>
+          <button onClick={stopWatch}>Stop</button>
+          <button onClick={resetStopWatch}>Reset</button>
+        </div>
       </div>
     </>
   );
