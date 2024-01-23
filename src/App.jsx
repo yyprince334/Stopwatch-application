@@ -63,7 +63,7 @@ function App() {
     return () => {
       clearInterval(timer);
     };
-  }, []);
+  }, [timer]);
 
   return (
     <>
